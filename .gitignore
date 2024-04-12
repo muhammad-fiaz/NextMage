@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+!mock-cert.pem
+coverage
+lib
+.idea
+.env
+*.pem
