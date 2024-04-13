@@ -20,13 +20,8 @@ export default (app: Probot, genAI: any) => {
                 body: `${analysisReport}`,
             });
 
-            // Add the "needs review" label to the pull request
-            await context.octokit.issues.addLabels({
-                owner: context.payload.repository.owner.login,
-                repo: context.payload.repository.name,
-                issue_number: context.payload.pull_request.number,
-                labels: ["needs review"],
-            });
+            // Add the "needs review" label to the pull request if it doesn't already exist
+            await addLabelIfNotExists(context, "needs review");
 
         } catch (error: any) {
             const errorMessage = `Error: ${error.message}`;
@@ -42,25 +37,37 @@ export default (app: Probot, genAI: any) => {
         return context.payload.pull_request.user.login;
     }
 
-    async function addBadge(context: any, badge: string) {
-        await context.octokit.issues.addLabels({
+    async function addLabelIfNotExists(context: any, label: string) {
+        const labels = await context.octokit.issues.listLabelsOnIssue({
             owner: context.payload.repository.owner.login,
             repo: context.payload.repository.name,
             issue_number: context.payload.pull_request.number,
-            labels: [badge],
         });
+
+        if (!labels.data.some((l: any) => l.name === label)) {
+            await context.octokit.issues.addLabels({
+                owner: context.payload.repository.owner.login,
+                repo: context.payload.repository.name,
+                issue_number: context.payload.pull_request.number,
+                labels: [label],
+            });
+        }
     }
 
-    async function removeBadge(context: any, badge: string) {
-        try {
+    async function removeLabelIfExists(context: any, label: string) {
+        const labels = await context.octokit.issues.listLabelsOnIssue({
+            owner: context.payload.repository.owner.login,
+            repo: context.payload.repository.name,
+            issue_number: context.payload.pull_request.number,
+        });
+
+        if (labels.data.some((l: any) => l.name === label)) {
             await context.octokit.issues.removeLabel({
                 owner: context.payload.repository.owner.login,
                 repo: context.payload.repository.name,
                 issue_number: context.payload.pull_request.number,
-                name: badge,
+                name: label,
             });
-        } catch (error: any) {
-            // Label does not exist, do nothing
         }
     }
 
@@ -74,14 +81,14 @@ export default (app: Probot, genAI: any) => {
 
         await generateCommentAndLabel(context, message, authorUsername);
 
-        // Remove the "needs review" badge
-        await removeBadge(context, "needs review");
+        // Remove the "needs review" label
+        await removeLabelIfExists(context, "needs review");
 
-        // Add the appropriate badge based on merge status
+        // Add the appropriate label based on merge status
         if (isMerged) {
-            await addBadge(context, "merged");
+            await addLabelIfNotExists(context, "merged");
         } else {
-            await addBadge(context, "closed");
+            await addLabelIfNotExists(context, "closed");
         }
     });
 
@@ -91,12 +98,12 @@ export default (app: Probot, genAI: any) => {
 
         await generateCommentAndLabel(context, message, authorUsername);
 
-        // Remove the "closed" or "feedback pending" badge if present
-        await removeBadge(context, "closed");
-        await removeBadge(context, "feedback pending");
+        // Remove the "closed" or "feedback pending" label if present
+        await removeLabelIfExists(context, "closed");
+        await removeLabelIfExists(context, "feedback pending");
 
-        // Add the "needs review" badge
-        await addBadge(context, "needs review");
+        // Add the "needs review" label
+        await addLabelIfNotExists(context, "needs review");
     });
 
     app.on("pull_request.synchronize", async (context) => {
@@ -110,11 +117,11 @@ export default (app: Probot, genAI: any) => {
 
         await generateCommentAndLabel(context, message, authorUsername);
 
-        // Remove the "feedback pending" badge if present
-        await removeBadge(context, "feedback pending");
+        // Remove the "feedback pending" label if present
+        await removeLabelIfExists(context, "feedback pending");
 
-        // Add the "needs review" badge
-        await addBadge(context, "needs review");
+        // Add the "needs review" label
+        await addLabelIfNotExists(context, "needs review");
     });
 
 };
