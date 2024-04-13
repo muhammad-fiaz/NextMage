@@ -4,12 +4,20 @@
   "private": true,
   "description": "Next Mage is an intelligent GitHub bot designed to streamline the management of issues and pull requests in your repository. When someone contributes to your repository, Next Mage automatically creates and manages the associated issue or pull request, saving you time and ensuring that contributions are promptly addressed.",
   "author": "muhammad-fiaz",
-  "license": "ISC",
-  "homepage": "https://github.com//",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com//muhammad-fiaz/nextmage#readme",
   "keywords": [
-    "probot",
+    "nextmage",
     "github",
-    "probot-app"
+    "action",
+    "bot",
+    "issue",
+    "pull request",
+    "automation",
+    "github-action",
+    "github-bot",
+    "github-automation"
+
   ],
   "scripts": {
     "build": "tsc",
