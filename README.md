@@ -1,4 +1,18 @@
+<div align="center">
+  <img src="https://github.com/muhammad-fiaz/NextMage/assets/75434191/fb8411f3-e89a-403f-aca2-6dbb41dc02bf" alt="logo" width="300" height="300">
+
 # Next Mage
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/muhammad-fiaz/NextMage)](https://github.com/muhammad-fiaz/NextMage/issues)
+[![GitHub forks](https://img.shields.io/github/forks/muhammad-fiaz/NextMage)](https://github.com/muhammad-fiaz/NextMage/network)
+[![GitHub stars](https://img.shields.io/github/stars/muhammad-fiaz/NextMage)](https://github.com/muhammad-fiaz/NextMage/stargazers)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/muhammad-fiaz/NextMage)](https://github.com/muhammad-fiaz/NextMage/pulls)
+[![GitHub contributors](https://img.shields.io/github/contributors/muhammad-fiaz/NextMage)](https://github.com/muhammad-fiaz/NextMage/graphs/contributors)
+[![GitHub maintainer](https://img.shields.io/badge/maintainer-muhammad--fiaz-blue)](https://github.com/muhammad-fiaz)
+
+</div>
+
 
 Next Mage: Your all-in-one GitHub bot for label, issue, pull request, and discussion management. Streamline your repository maintenance with ease.
 
