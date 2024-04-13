@@ -1,15 +1,15 @@
 import { Probot } from "probot";
+import issue_manager from "./issue_manager.js";
+import {GoogleGenerativeAI} from "@google/generative-ai";
+
+let genAI: GoogleGenerativeAI | undefined;
 
 export default (app: Probot) => {
-  app.on("issues.opened", async (context) => {
-    const issueComment = context.issue({
-      body: "Thanks for opening this issue!",
-    });
-    await context.octokit.issues.createComment(issueComment);
-  });
-  // For more information on building apps:
-  // https://probot.github.io/docs/
-
-  // To get your app running against GitHub, see:
-  // https://probot.github.io/docs/development/
+  if (process.env.GEMINI_API_KEY) {
+    genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  } else {
+    console.error("GEMINI_API_KEY environment variable is not set.");
+    return;
+  }
+issue_manager(app,genAI);
 };
