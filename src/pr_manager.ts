@@ -113,7 +113,7 @@ export default (app: Probot, genAI: any) => {
 
         const description = context.payload.pull_request.body || "";
         const authorUsername = await getAuthorUsername(context);
-        const message = `Review the updated changes of pull request and explain the code changes from below and to finalize need owner/author/contributors/maintainers review : and this is the code changes \n\n${diffContent}\n\n this is a PR Request Author's Description:\n${description}`;
+        const message = `Review the updated changes of pull request detailed with changed as code reference and explain the code changes from below and to finalize need owner/author/contributors/maintainers review : and this is the code changes \n\n${diffContent}\n\n this is a PR Request Author's Description:\n${description}`;
 
         await generateCommentAndLabel(context, message, authorUsername);
 
