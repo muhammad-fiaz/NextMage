@@ -19,10 +19,12 @@
     "github-automation"
 
   ],
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "probot run ./lib/index.js",
-    "test": "vitest"
+    "start": "bun run probot run ./lib/index.js",
+    "test": "vitest",
+    "poststart": "bun start"
   },
   "dependencies": {
     "@google/generative-ai": "^0.6.0",
