@@ -1,36 +1,32 @@
-name: CI
+name: NodeJS 
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Load environment variables
-        uses: actions/setup-dotenv@v2
-        with:
-          path: .env
-
-      - name: Compile TypeScript
-        run: npx tsc
-
-      - name: Run script
-        run: node lib/index.js
+    - name: Build
+      run: |
+        npm install
+        npm run build
+        npm start
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
