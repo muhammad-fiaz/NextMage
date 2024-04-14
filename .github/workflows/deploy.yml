@@ -26,10 +26,3 @@ jobs:
       run: |
         npm install
         npm run build
-
-    - name: Deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        npm install -g gh-pages
-        npx gh-pages -d ./lib -b gh-pages --add
