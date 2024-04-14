@@ -34,11 +34,9 @@ jobs:
         npm run build
 
     - name: Deploy
-      run: |
-        npm start
       env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        WEBHOOK_PROXY_URL: ${{ secrets.WEBHOOK_PROXY_URL }}
-        WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
-        APP_ID: ${{ secrets.APP_ID }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        npm install -g gh-pages
+        npm run build
+        npx gh-pages -d ./lib -b main
