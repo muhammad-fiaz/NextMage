@@ -1,4 +1,4 @@
-name: NodeJS 
+name: NodeJS
 
 on:
   push:
@@ -23,12 +23,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Build
-      env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        WEBHOOK_PROXY_URL: ${{ secrets.WEBHOOK_PROXY_URL }}
-        WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
-        APP_ID: ${{ secrets.APP_ID }}
       run: |
         npm install
         npm run build
@@ -38,5 +32,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         npm install -g gh-pages
-        npm run build
-        npx gh-pages -d ./lib -b main
+        npx gh-pages -d ./lib -b gh-pages --add
