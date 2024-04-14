@@ -32,10 +32,13 @@ jobs:
       run: |
         npm install
         npm run build
-        npm start
 
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./lib  
+      run: |
+        npm start
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        WEBHOOK_PROXY_URL: ${{ secrets.WEBHOOK_PROXY_URL }}
+        WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+        APP_ID: ${{ secrets.APP_ID }}
