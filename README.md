@@ -10,7 +10,7 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/muhammad-fiaz/NextMage)](https://github.com/muhammad-fiaz/NextMage/pulls)
 [![GitHub contributors](https://img.shields.io/github/contributors/muhammad-fiaz/NextMage)](https://github.com/muhammad-fiaz/NextMage/graphs/contributors)
 [![GitHub maintainer](https://img.shields.io/badge/maintainer-muhammad--fiaz-blue)](https://github.com/muhammad-fiaz)
-
+[![NodeJS](https://github.com/muhammad-fiaz/NextMage/actions/workflows/build.yml/badge.svg)](https://github.com/muhammad-fiaz/NextMage/actions/workflows/build.yml)
 </div>
 
 
