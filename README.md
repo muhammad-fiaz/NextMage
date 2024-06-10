@@ -11,6 +11,13 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/muhammad-fiaz/NextMage)](https://github.com/muhammad-fiaz/NextMage/graphs/contributors)
 [![GitHub maintainer](https://img.shields.io/badge/maintainer-muhammad--fiaz-blue)](https://github.com/muhammad-fiaz)
 [![NodeJS](https://github.com/muhammad-fiaz/NextMage/actions/workflows/build.yml/badge.svg)](https://github.com/muhammad-fiaz/NextMage/actions/workflows/build.yml)
+[![Follow me on GitHub](https://img.shields.io/github/followers/muhammad-fiaz?label=Follow&style=social)](https://github.com/muhammad-fiaz)
+<a href="https://discord.gg/uRkZ5cHf" target="_blank">
+  <img
+    src="https://dcbadge.limes.pink/api/server/https://discord.gg/uRkZ5cHf?style=shield"
+    alt="discord invite"
+  />
+</a>
 </div>
 
 
