@@ -43,6 +43,8 @@ docker build -t nextmage .
 docker run -e APP_ID=<app-id> -e PRIVATE_KEY=<pem-value> nextmage
 ```
 
+> This Project need Gemini API Key You can Get it at Google AI Studio
+
 ## Contributing
 
 If you have suggestions for how next mage could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
