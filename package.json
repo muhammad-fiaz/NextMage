@@ -27,7 +27,7 @@
     "poststart": "bun start"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.21.0",
+    "@google/generative-ai": "^0.23.0",
     "probot": "^13.4.1"
   },
   "devDependencies": {
