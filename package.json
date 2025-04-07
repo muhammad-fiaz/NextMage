@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
-    "probot": "^13.4.1"
+    "probot": "^13.4.5"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
